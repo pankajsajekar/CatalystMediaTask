@@ -8,7 +8,7 @@
 git clone https://github.com/pankajsajekar/CatalystMediaTask.git
 ```
 
-## A. Setup Project
+## A. Setup Django Server
 1. change dir
 ```
 cd CatalystMediaTask
@@ -41,4 +41,21 @@ python manage.py runserver
 8. Createsuper user
 ```
 python manage.py createsuperuser
+```
+
+
+## B. Setup Celery 
+#### Open new terminal & run this command
+
+```bash
+celery -A CatalystMediaTask worker -l INFO
+```
+
+Need venv activated
+
+
+## C. Setup WebSocket 
+#### Open new terminal & run this command
+```bash
+python ws_server.py
 ```
