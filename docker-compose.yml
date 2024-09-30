@@ -1,0 +1,34 @@
+services:
+  web:
+    build: .
+    command: python3 manage.py runserver 0.0.0.0:8000
+    ports:
+      - 8002:8000
+    depends_on:
+      - db
+    networks:
+      testdockernetwork:
+    
+  db:
+    image: postgres:16.4-alpine
+    ports:
+      - 5435:5432
+    volumes:
+      - my_Data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: catalystmediadb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+    networks:
+      testdockernetwork:
+
+
+volumes:
+  my_Data:
+
+
+networks:
+  testdockernetwork:
+    driver: bridge    
+
+    

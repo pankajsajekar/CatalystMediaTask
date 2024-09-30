@@ -1,0 +1,15 @@
+FROM python:3.10
+
+ENV PYTHONUNBUFFERED=1
+
+# RUN mkdir /test_docker
+WORKDIR /catalyst_docker
+
+COPY . /catalyst_docker
+COPY requirements.txt /catalyst_docker
+
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
+COPY . /catalyst_docker
+
+CMD ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
