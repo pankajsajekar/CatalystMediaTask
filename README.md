@@ -59,3 +59,7 @@ Need venv activated
 ```bash
 python ws_server.py
 ```
+
+Requirements for executing tasks:
+- RAM: minimum of 16 GB
+- Processor: Intel Core i5
