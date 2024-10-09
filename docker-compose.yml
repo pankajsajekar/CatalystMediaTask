@@ -3,32 +3,33 @@ services:
     build: .
     command: python3 manage.py runserver 0.0.0.0:8000
     ports:
-      - 8002:8000
+      - 8005:8000
     depends_on:
       - db
+    env_file:
+      - docker.env
     networks:
-      testdockernetwork:
+      docker_network:
     
   db:
     image: postgres:16.4-alpine
     ports:
-      - 5435:5432
+      - 5434:5432
+    environment:
+        POSTGRES_DB: catalystmediadb
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: 123
     volumes:
       - my_Data:/var/lib/postgresql/data
-    environment:
-      POSTGRES_DB: catalystmediadb
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 123
     networks:
-      testdockernetwork:
-
+      docker_network:
 
 volumes:
   my_Data:
 
 
 networks:
-  testdockernetwork:
+  docker_network:
     driver: bridge    
 
     
