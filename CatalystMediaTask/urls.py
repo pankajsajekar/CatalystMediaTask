@@ -8,7 +8,7 @@ urlpatterns = [
     
     # logout
     path('accounts/logout/', views.account_logout, name='account_logout'),
-    
+    ##tets
     # django-allauth
     path('accounts/', include('allauth.urls') ),
     
